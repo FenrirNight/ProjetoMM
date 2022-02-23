@@ -28,7 +28,7 @@ export class FormularioComponent implements OnInit {
 onSubmit() {
   console.log(this.formPessoas.value);
 
-  //Limpar Formulário após Cadastro
+  //Limpar Formulário após cadastro
   this.formPessoas.reset(new Pessoas());
 
   }
