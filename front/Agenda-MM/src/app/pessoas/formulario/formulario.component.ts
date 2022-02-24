@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Pessoas } from '../shared/pessoas';
+import { Pessoa } from '../shared/pessoas';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule} from '@angular/forms';
+import { PessoasService } from 'src/app/pessoas.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-formulario',
@@ -12,24 +14,26 @@ export class FormularioComponent implements OnInit {
   formPessoas: FormGroup;
 
 
-  constructor() { }
+  constructor(private pessoasService : PessoasService) { }
 
   ngOnInit() {
-    this.createForm(new Pessoas());
+    this.createForm(new Pessoa());
   }
 
-  createForm(pessoas: Pessoas) {
+  createForm(pessoas: Pessoa) {
     this.formPessoas = new FormGroup({
     nome: new FormControl (pessoas.nome),
     email: new FormControl (pessoas.email),
     telefone: new FormControl (pessoas.telefone)
   })
+
 }
 onSubmit() {
   console.log(this.formPessoas.value);
 
   //Limpar Formulário após cadastro
-  this.formPessoas.reset(new Pessoas());
+  this.formPessoas.reset(new Pessoa());
 
   }
+
 }
