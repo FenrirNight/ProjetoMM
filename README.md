@@ -14,33 +14,50 @@ Tabela de conteúdos
    * [Tecnologias](#tecnologias)
 <!--te-->
 
-*Instalação
+<h2 align:center>👨‍💻 Instalação </h2>
 
-Para o gerenciamento de pacotes do Node, foi realizado o download do JavaScript runtime Node.js através do link https://nodejs.org/en/download/
-Para a criação do projeto em Angular, foi realizada a instalação do Angular CLI através do guia "SETUP" disponibilizado no link  https://angular.io/guide/setup-local
+<p>Para o gerenciamento de pacotes do Node, foi realizado o download do JavaScript runtime Node.js através do link https://nodejs.org/en/download/</p>
+<p>Para a criação do projeto em Angular, foi realizada a instalação do Angular CLI através do guia "SETUP" disponibilizado no link  https://angular.io/guide/setup-local</p>
 
-* Como usar
-1º Clonar o projeto
-2º Abrir um terminal
-3º Acessar a pasta Agenda-MM/front
-4º Executar o comando ng serve --open
-5º Para a API abrir novo terminal
-6º Acessar a pasta Agenda-MM/back/http
-7º Executar o comando npm run api
+<h2 align:center>🚀 Como executar o projeto</h2>
 
-*Configuração
-Angular CLI - 13.2.4
-Node - 16.14
-NPM Nodemon
-Windows 10
+🧭 Rodando a aplicação web (Frontend)
+```
+# Clonar este repositório
+$ git clone https://github.com/FenrirNight/ProjetoMM
 
-*Ferramentas de Desenvolvimento
-Visual Studio Code
-GitHub
+# Abrir um terminal
 
-*Tecnologias
-Node.js
-Angular CLI
+# Acessar à pasta no terminal 
+$ cd Agenda-MM/front
 
-Status do Projeto
+# Executar o comando 
+$ ng serve --open
+```
+
+🎲 Rodando o Backend (servidor)
+```
+# Para a API abrir novo terminal
+
+# Acessar a pasta 
+$ cd Agenda-MM/back/http
+
+# Executar o comando 
+$ npm run api
+```
+<h2 align:center>💻 Configuração </h2>
+<p>Angular CLI - 13.2.4</p>
+<p>Node - 16.14</p>
+<p>NPM Nodemon</p>
+<p>Windows 10</p>
+
+<h2 align:center>⚙️ Ferramentas de Desenvolvimento</h2>
+<p>Visual Studio Code</p>
+<p>GitHub</p>
+
+<h2 align:center>🛠 Tecnologias</h2>
+<p>Node.js</p>
+<p>Angular CLI</p>
+
+ <h2 align:center> Status do Projeto </h2>
 <h2 align:center>
