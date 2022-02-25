@@ -59,12 +59,19 @@
   transform: scale(1.1);
 }
 
+
+.cad-head {
+  text-align: center;
+  padding: 40px;
+  font-weight: bold;
+}
+
 .cad-list{
-  display: grid;
   grid-template-columns: 20px 20px;
   text-align: center;
   border: ridge;
   margin: 20px;
   border-radius: 5px;
   padding: 20px;
+  font-weight: bold;
 }

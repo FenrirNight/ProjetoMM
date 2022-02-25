@@ -18,7 +18,9 @@
           class="form-control"
           name="name"
           id="nomesobrenome"
+          required
           formControlName="nome"
+
         />
       </div>
 
@@ -29,6 +31,7 @@
           class="form-control"
           name="email"
           id="email"
+          required
           formControlName="email"
         />
       </div>
@@ -40,6 +43,7 @@
           class="form-control"
           name="name"
           id="telefone"
+          required
           formControlName="telefone"
         />
       </div>
@@ -50,11 +54,14 @@
     </form>
   </div>
 
+
+  <div class="cad-head"> <h1>Pessoas Cadastradas</h1> </div>
   <div class="cad-list">
-    <h1>Pessoas Cadastradas</h1>
+
     <ul class="Pessoas">
+      <h2> Nome  /  E-mail  /  Telefone</h2>
       <li *ngFor="let pessoa of pessoas">
-        <span class="grupo">{{ pessoa.nome }} {{ pessoa.email }} {{ pessoa.telefone }}</span>
+        <span class="grupo">{{ pessoa.nome }}   /   {{ pessoa.email }}   /   {{ pessoa.telefone }}</span>
       </li>
     </ul>
   </div>
