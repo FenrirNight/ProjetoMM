@@ -1,38 +1,43 @@
 const http = require("http");
 const URL = require("url");
 const fs = require('fs')
-const data = require("./agendas.json");
+const express = require('express');
 
-function writeFile(cb) {
-    fs.writeFile(
-        path.join(__dirname, "agendas.json"),
-        JSON.stringify(data, null, 2),
-        err => {
-            if(err) throw err
+const app = express(),
+        bodyParser = require("body-parser");
+        port = 3000;
 
-            cb(JSON.stringify({message: "ok"}))
-        }
-    )
-}
+const agendas = [];
 
-http
-  .createServer((req, res) => {
-    const { nome, email, telefone, del } = URL.parse(req.url, true).query;
+var nedb = require('nedb');
+var db = new nedb({filename: 'pessoas.db', autoload: true});
 
-    res.writeHead(200, {
-        'Access-Control-Allow-Origin': '*'
-    })
+app.use(bodyParser.json());
 
-    if (!nome || !email || !telefone)
-    return res.end(JSON.stringify(data))
+app.get('/api/pessoas', (req, res) => {
+  res.json(agendas);
+});
 
-    if (del) {
-        data.agendas = data.agendas.filter(item => String(item.email) !== String(email)) 
-        return writeFile((message) => res.end(message))
-}
+app.post('/api/pessoas', (req, res) => {
+    console.log(req.body);
+  const pessoas = req.body.pessoa;
+  agendas.push(pessoas);
+  
 
-    data.agendas.push({nome, email, telefone})
+  db.insert(pessoas, function(err){
+    if(err)return console.log(err); //caso ocorrer algum erro
+    res.send("Cadastro Realizado");
+  });
+});
 
-    return writeFile((message) => res.end(message))
-  })
-  .listen(3000, () => console.log("API is running"));
+app.get('/', (req,res) => {
+   db.find({}, function(err, pessoas){
+    if(err)return console.log(err);
+       res.json (pessoas);
+    });
+
+});
+
+app.listen(port, () => {
+    console.log(`Server listening on the port::${port}`);
+});
