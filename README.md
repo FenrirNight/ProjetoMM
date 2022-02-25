@@ -50,6 +50,10 @@ $ npm run api
 
 #port:5000
 ```
+🔨 Como Utilizar (servidor)
+```
+# Para que os dados apareçam no campo "Pessoas Cadastradas" é necessário dar refresh na página.
+```
 <h2 align:center>💻 Configuração </h2>
 <p>Angular CLI - 13.2.4</p>
 <p>Node - 16.14</p>
