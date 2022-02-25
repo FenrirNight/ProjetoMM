@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Pessoa } from '../shared/pessoas';
 import { FormularioService } from './formulario.service';
@@ -12,13 +12,14 @@ import { FormularioService } from './formulario.service';
 })
 export class FormularioComponent implements OnInit {
   formPessoas!: FormGroup;
-
-  constructor(private formularioService: FormularioService) {}
-
   title = 'Agenda-MM';
+  pessoas: Pessoa[] = [];
+
+  constructor(private service: FormularioService) {}
 
   ngOnInit() {
     this.createForm(new Pessoa());
+    this.getPessoas();
   }
 
   createForm(pessoas: Pessoa) {
@@ -26,25 +27,29 @@ export class FormularioComponent implements OnInit {
       nome: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       telefone: new FormControl('', Validators.required),
-    })
-  };
-    pessoas: Pessoa[] = [];
+    });
+  }
 
-    destroy$: Subject<boolean> = new Subject<boolean>();
+  getPessoas(): void {
+    this.service.getPessoas().subscribe((pessoas) => (this.pessoas = pessoas));
+  }
 
   onSubmit() {
-    this.formularioService.addPessoas(this.formPessoas.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
-      console.log('message::::', data);
+    this.service
+      .addPessoas(this.formPessoas.value)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data) => {
+        console.log('message::::', data);
+      });
+
       this.formPessoas.reset();
-    alert('Cadastro realizado com sucesso');
-  })};
-
-  // getAllUsers() {
-  //   this.formularioService.getPessoas().pipe(takeUntil(this.destroy$)).subscribe((pessoas: Pessoa[]) => {this.pessoas = pessoas});
-  // }
-
-    ngOnDestroy() {
-      this.destroy$.next(true);
-      this.destroy$.unsubscribe();
-    };
+      alert('Cadastro realizado com sucesso');
   }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+  destroy$: Subject<boolean> = new Subject<boolean>();
+}

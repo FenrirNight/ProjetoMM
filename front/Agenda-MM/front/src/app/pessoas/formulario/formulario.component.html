@@ -1,37 +1,61 @@
 <title>AgendaMM</title>
 
 <div class="projeto">
-<div class="banner">
-<img id="logo" src='../../../assets/Logo.png'>
-</div>
-
-<div class="principal">
-  <h1> Cadastre-se </h1>
-</div>
-
-<div class="form-full">
-<form [formGroup]="formPessoas" (ngSubmit)="onSubmit()">
-
-
-  <div class="form-group">
-    <label for="nomesobrenome">Nome</label><br>
-    <input type="text" class="form-control" name="name" id="nomesobrenome" formControlName="nome">
+  <div class="banner">
+    <img id="logo" src="../../../assets/Logo.png" />
   </div>
 
-  <div class="form-group">
-    <label for="email">E-mail</label><br>
-    <input type="text" class="form-control" name="email" id="email" formControlName="email">
+  <div class="principal">
+    <h1>Cadastre-se</h1>
   </div>
 
-  <div class="form-group">
-    <label for="telefone">Telefone</label><br>
-    <input type="text" class="form-control" name="name" id="telefone" formControlName="telefone">
+  <div class="form-full">
+    <form [formGroup]="formPessoas" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nomesobrenome">Nome</label><br />
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="nomesobrenome"
+          formControlName="nome"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label><br />
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          id="email"
+          formControlName="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone</label><br />
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="telefone"
+          formControlName="telefone"
+        />
+      </div>
+
+      <div id="botao">
+        <input type="submit" class="botaoenviar" value="Cadastrar" />
+      </div>
+    </form>
   </div>
 
-  <div id="botao">
-    <input type="submit" class="botaoenviar" value="Cadastrar">
+  <div class="cad-list">
+    <h1>Pessoas Cadastradas</h1>
+    <ul class="Pessoas">
+      <li *ngFor="let pessoa of pessoas">
+        <span class="grupo">{{ pessoa.nome }} {{ pessoa.email }} {{ pessoa.telefone }}</span>
+      </li>
+    </ul>
   </div>
-
-</form>
-</div>
 </div>
